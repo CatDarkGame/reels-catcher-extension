@@ -1,0 +1,7 @@
+{
+  "dataset_root": "/path/to/reels-catcher_output",
+  "obsidian_vault": "/path/to/obsidian/vault",
+  "reels_catcher_src": "/path/to/reels-catcher/src",
+  "notion_api_key": "secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "notion_db_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}

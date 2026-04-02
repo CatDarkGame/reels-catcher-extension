@@ -86,9 +86,11 @@ pip install -r <path-to-reels-catcher-extension>/requirements.txt
 
 ```bash
 mkdir -p ~/.local/share/reels-catcher-extension
+cp <path-to-reels-catcher-extension>/config.example.json \
+   ~/.local/share/reels-catcher-extension/config.json
 ```
 
-Create `~/.local/share/reels-catcher-extension/config.json`:
+Open `~/.local/share/reels-catcher-extension/config.json` and fill in the values:
 
 ```json
 {

@@ -52,30 +52,6 @@ SEEN_FILE = Path.home() / ".local" / "share" / "reels-catcher-extension" / "ext_
 SERVER_START_TIME = datetime.now(timezone.utc)
 
 
-def _parse_timestamp(raw) -> "datetime | None":
-    """ISO 문자열 또는 Unix epoch(초/밀리초) 모두 처리."""
-    if raw is None:
-        return None
-    try:
-        # Unix epoch 숫자 (Instagram API: 초 단위 정수)
-        v = float(raw)
-        # 밀리초 구분: 13자리 이상이면 ms
-        if v > 1e12:
-            v /= 1000
-        return datetime.fromtimestamp(v, tz=timezone.utc)
-    except (ValueError, TypeError):
-        pass
-    try:
-        # ISO 8601 문자열
-        ts = str(raw).replace("Z", "+00:00")
-        dt = datetime.fromisoformat(ts)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
-        return dt
-    except Exception:
-        return None
-
-
 def _parse_timestamp(ts) -> "datetime | None":
     """Unix epoch(초/밀리초) 또는 ISO 문자열 → timezone-aware datetime"""
     if ts is None:

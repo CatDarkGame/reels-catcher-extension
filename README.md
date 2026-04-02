@@ -78,16 +78,18 @@ reels-catcher의 가상환경에 추가 패키지를 설치합니다:
 ```bash
 cd <reels-catcher 경로>
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install notion-client
+pip install -r <reels-catcher-extension 경로>/requirements.txt
 ```
 
 ### 2. 설정 파일 생성
 
 ```bash
 mkdir -p ~/.local/share/reels-catcher-extension
+cp <reels-catcher-extension 경로>/config.example.json \
+   ~/.local/share/reels-catcher-extension/config.json
 ```
 
-`~/.local/share/reels-catcher-extension/config.json` 파일을 생성합니다:
+`~/.local/share/reels-catcher-extension/config.json`을 열어 각 값을 채웁니다:
 
 ```json
 {
