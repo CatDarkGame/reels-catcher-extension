@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>reels-catcher</title>
+    <style>
+      :root {
+        --ink: #10213a;
+        --muted: #5a6b84;
+        --surface: #fff9f1;
+        --card: #ffffff;
+        --line: #e7d8bf;
+        --accent: #ef6b3f;
+        --accent-soft: #ffd8c8;
+        --success: #2d7f4e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 300px;
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        background:
+          radial-gradient(circle at top right, rgba(239, 107, 63, 0.18), transparent 42%),
+          linear-gradient(160deg, #fff8ef, #fff0db 72%, #ffe6d2);
+        color: var(--ink);
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      .panel {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 14px 30px rgba(16, 33, 58, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .subtext {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .status-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 16px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: var(--surface);
+        border: 1px solid rgba(231, 216, 191, 0.9);
+      }
+
+      .status-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .status-value {
+        margin-top: 4px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .status-value[data-state="on"] {
+        color: var(--success);
+      }
+
+      .status-value[data-state="off"] {
+        color: var(--accent);
+      }
+
+      .switch {
+        position: relative;
+        width: 54px;
+        height: 32px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        border-radius: 999px;
+        background: #cdd6e2;
+        transition: background 0.18s ease;
+      }
+
+      .slider::before {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        left: 4px;
+        top: 4px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 3px 10px rgba(16, 33, 58, 0.16);
+        transition: transform 0.18s ease;
+      }
+
+      input:checked + .slider {
+        background: linear-gradient(135deg, #ff8a5c, #ef6b3f);
+      }
+
+      input:checked + .slider::before {
+        transform: translateX(22px);
+      }
+
+      .count-card {
+        margin-top: 14px;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 14px;
+        background: linear-gradient(140deg, rgba(255, 216, 200, 0.8), rgba(255, 255, 255, 0.92));
+        border: 1px solid rgba(239, 107, 63, 0.18);
+      }
+
+      .count-number {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .footer {
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="panel">
+        <h1>reels-catcher</h1>
+        <p class="subtext">Instagram DM 응답에서 릴스 URL만 감지해 로컬 API로 전달합니다.</p>
+
+        <div class="status-row">
+          <div>
+            <p class="status-label">확장 상태</p>
+            <p id="statusText" class="status-value" data-state="on">감시 중</p>
+          </div>
+
+          <label class="switch" aria-label="감시 토글">
+            <input id="enabledToggle" type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="status-row" style="margin-top:10px;">
+          <div>
+            <p class="status-label">서버 연결</p>
+            <p id="serverStatus" class="status-value" data-state="off">확인 중…</p>
+          </div>
+          <span id="serverDot" style="width:12px;height:12px;border-radius:50%;background:#ccc;display:inline-block;"></span>
+        </div>
+
+        <div class="count-card">
+          <span id="todayCount" class="count-number">0</span>
+          <span>오늘 처리된 릴스 수</span>
+        </div>
+
+        <p class="footer">서버: <code>http://localhost:8000/api/reels</code></p>
+      </section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
