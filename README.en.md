@@ -4,6 +4,9 @@
 
 A Chrome Extension + local server that automatically detects Instagram Reels shared via DM, processes them through the reels-catcher pipeline, and syncs them to a Notion database.
 
+<img width="424" height="666" alt="image" src="https://github.com/user-attachments/assets/be757d42-a3a5-4868-a97c-4d1730f84c72" />
+<img width="2088" height="776" alt="image" src="https://github.com/user-attachments/assets/0c188c98-b5a7-407d-bda4-a004ff78cf9a" />
+
 ## Platform Compatibility
 
 | Component | macOS | Windows | Linux |
