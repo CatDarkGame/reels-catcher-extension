@@ -3,3 +3,4 @@
 #   pip install -r requirements.txt
 
 notion-client>=3.0.0
+imageio-ffmpeg>=0.5.0

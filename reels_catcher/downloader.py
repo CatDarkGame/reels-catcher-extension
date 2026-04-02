@@ -15,6 +15,22 @@ from pathlib import Path
 SHORTCODE_PATTERN = re.compile(r"instagram\.com/(?:reels?|p)/([A-Za-z0-9_-]+)")
 
 
+def _ffmpeg_location() -> list[str]:
+    """imageio_ffmpeg 또는 시스템 ffmpeg 경로를 --ffmpeg-location 인자로 반환."""
+    # 1) imageio_ffmpeg 번들 ffmpeg
+    try:
+        import imageio_ffmpeg
+        exe = imageio_ffmpeg.get_ffmpeg_exe()
+        if exe:
+            return ["--ffmpeg-location", exe]
+    except Exception:
+        pass
+    # 2) 시스템 PATH ffmpeg
+    if shutil.which("ffmpeg"):
+        return ["--ffmpeg-location", shutil.which("ffmpeg")]
+    return []
+
+
 def _extract_shortcode(url: str) -> str:
     match = SHORTCODE_PATTERN.search(url)
     if not match:
@@ -166,6 +182,7 @@ def download(url: str, output_dir: str) -> dict:
             "-m",
             "yt_dlp",
             *cookie_opts,
+            *_ffmpeg_location(),
             "--write-info-json",
             "--write-thumbnail",
             "--convert-thumbnails",
