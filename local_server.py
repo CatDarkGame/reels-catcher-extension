@@ -258,7 +258,7 @@ if __name__ == "__main__":
     server = HTTPServer(("127.0.0.1", args.port), Handler)
     log.info(f"🚀 reels-catcher 서버 시작: http://localhost:{args.port}/api/reels")
     log.info(f"   서버 시작 시각: {SERVER_START_TIME.strftime('%H:%M:%S')} (이후 수신 DM만 처리)")
-    log.info(f"   파이프라인: {'✅ 활성' if PIPELINE_AVAILABLE else '❌ 비활성 (test_server.py로 동작)'}")
+    log.info(f"   파이프라인: {'✅ 활성' if PIPELINE_AVAILABLE else '❌ 비활성 (debug_server.py로 동작)'}")
     log.info(f"   seen 파일: {SEEN_FILE}")
     log.info("   종료: Ctrl+C\n")
 

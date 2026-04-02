@@ -2,5 +2,7 @@
 # Install into your virtual environment:
 #   pip install -r requirements.txt
 
+click>=8.0.0
 notion-client>=3.0.0
 imageio-ffmpeg>=0.5.0
+yt-dlp>=2023.0.0

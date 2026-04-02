@@ -4,8 +4,8 @@ reels-catcher Extension 테스트 서버
 Chrome Extension에서 보내는 POST 요청을 받아 터미널에 출력합니다.
 
 실행:
-    python3 test_server.py
-    python3 test_server.py --port 8000
+    python3 debug_server.py
+    python3 debug_server.py --port 8000
 """
 
 import argparse
