@@ -1,0 +1,5 @@
+# reels-catcher-extension Python dependencies
+# Install into your virtual environment:
+#   pip install -r requirements.txt
+
+notion-client>=3.0.0

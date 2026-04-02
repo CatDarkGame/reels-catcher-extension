@@ -1,6 +1,11 @@
+🇰🇷 한국어 | [🇺🇸 English](README.en.md)
+
 # reels-catcher-extension
 
 Instagram DM으로 공유받은 릴스(Reels)를 자동으로 감지해 로컬 reels-catcher 파이프라인으로 전달하고, Notion 데이터베이스에 동기화하는 Chrome Extension + 로컬 서버.
+
+<img width="424" height="666" alt="image" src="https://github.com/user-attachments/assets/be757d42-a3a5-4868-a97c-4d1730f84c72" />
+<img width="2088" height="776" alt="image" src="https://github.com/user-attachments/assets/0c188c98-b5a7-407d-bda4-a004ff78cf9a" />
 
 ## 플랫폼 호환성
 
@@ -170,8 +175,8 @@ python3 <reels-catcher-extension 경로>/local_server.py
 이미 수집된 데이터를 Notion에 일괄 업로드합니다:
 
 ```bash
-cd <reels-catcher 경로>
-source .venv/bin/activate
+# venv 활성화
+source <venv 경로>/bin/activate          # Windows: <venv 경로>\Scripts\activate
 
 # 항목 확인 (dry-run)
 python3 <reels-catcher-extension 경로>/scripts/backfill_notion.py --dry-run
@@ -198,3 +203,7 @@ python3 <reels-catcher-extension 경로>/scripts/backfill_notion.py --no-video
 ```bash
 python3 debug_server.py
 ```
+
+## 라이선스
+
+[MIT](LICENSE)
